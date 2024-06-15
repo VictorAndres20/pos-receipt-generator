@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { readExcel } from "../_utils/bridge";
 import { alertError, alertSuccess } from "../_utils/alert";
+import { buildProducts } from "../_utils/products-group";
 
 export const useProducts = () => {
 
@@ -10,7 +11,7 @@ export const useProducts = () => {
     useEffect(() => {
         readExcel()
         .then(data => {
-            productsRef.current = data.rows;
+            productsRef.current = buildProducts(data.rows);
             alertSuccess("Productos cargados");
             setLoading(false);
         })

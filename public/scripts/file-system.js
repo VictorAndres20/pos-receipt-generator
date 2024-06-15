@@ -3,6 +3,7 @@ const path = require('node:path');
 const readXlsxFile = require('read-excel-file/node')
 
 const fileName = '../data/products';
+const configurationFileName = '../data/settings';
 
 const readProductsExcel = async () => {
     return await readXlsxFile(path.join(__dirname, `${fileName}.xlsx`), {
@@ -35,8 +36,24 @@ const readProductsJson = () => {
     return ['JSON'];
 }
 
+const readConfigurationJson = () => {
+    const config = fs.readFileSync(`${path.join(__dirname, configurationFileName)}.json`, 'utf-8');
+    return JSON.parse(config);
+}
+
+const readBase64InternalFile = (pathFile) => {
+    return fs.readFileSync(pathFile, {encoding: 'base64'});
+}
+  
+const deleteInternalFile = (pathFile) => {
+    fs.unlinkSync(pathFile)
+}
+
 module.exports = {
     readProductsExcel,
     readProductsJson,
-    writeProductsJson
+    writeProductsJson,
+    readConfigurationJson,
+    readBase64InternalFile,
+    deleteInternalFile
 }

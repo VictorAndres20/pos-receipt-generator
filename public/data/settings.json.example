@@ -1,0 +1,20 @@
+{
+    "welcomeMessage": "WELCOME BRO",
+    "place": "PLACE HERE",
+    "company": "VICTOR PEDRAZA",
+    "companyType": "SIMPLE",
+    "idName": "ID NAME:",
+    "id": "12345678-9",
+    "address": "YOUR ADDRESS",
+    "city": "CITY HERE",
+    "phone": "123456789",
+    "prefix": "ACP",
+    "info": 0,
+    "info1": "SOFTWARE ACME P.O.S AUTHORIZATION",
+    "info2": "18764070915240 Date: 2024/05/18",
+    "info3": "Authorization from ACP 1 to ACP 100000",
+    "info4": "Prefix: ACP until",
+    "info5": "2026-05-18",
+    "activity": "Activity 5613",
+    "byeMessage": "THNAKS"
+}

@@ -1,9 +1,16 @@
 const electron = require('electron');
 const app = electron.app;
+const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('node:path');
 const isDev = require('electron-is-dev');
+const {
+  readProductsExcel
+} = require("./scripts/file-system");
+const {
+  getPrintPDF
+} = require("./scripts/pdf-generator");
 
 var mainWindow;
 
@@ -17,6 +24,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
+      contextIsolation: false
     },
   });
   // Register some variables and functions to invoke in preloads.js
@@ -48,3 +56,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+ipcMain.handle('readProductsExcel', readProductsExcel);
+ipcMain.handle('getPrintPDF', async (event, parameters) => getPrintPDF(parameters));
